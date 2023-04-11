@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      lang="ru">
+<head>
+  <title>Заказы</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link href="/css/mystyle.css" rel="stylesheet">
+  <link href="/css/bootstrap.css" rel="stylesheet">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/background.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
+</head>
+<body>
+<div th:insert="Blocks/Header" style="margin-top: 120px">...</div>
+<div class="bg-ex-animation">
+  <div class="wrapper">
+    <h3>Управление</h3>
+    <div class="form-group">
+      <select id="select" name="select">
+        <option>- -</option>
+        <option>Смена тарифа</option>
+        <option>Сменить пароль для Интернет</option>
+        <option>Расторжение договора</option>
+      </select>
+    </div>
+    <div class="block" style="visibility: hidden;"></div>
+    <div class="block">
+      <table class="table table-center table-control">
+        <tbody>
+        <tr>
+          <th>Текущий тариф</th>
+          <td>
+            ХИТ
+          </td>
+        </tr>
+        <tr>
+          <th>Доступные тарифы</th>
+          <td>
+            <div class="form-group">
+              <select class="form-control">
+                <option value="[object Object]">
+                  ЛАЙТ
+                  <!---->
+                </option>
+                <option value="[object Object]">
+                  СТАРТ
+                  <!---->
+                </option>
+                <option value="[object Object]">
+                  ХИТ
+                  <!---->
+                </option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="block">
+      <table class="table table-center table-control">
+        <tbody>
+        <tr>
+          <th>Текущий пароль</th>
+          <td>
+            <div class="form-group">
+              <input type="password" placeholder="Текущий пароль" autocomplete="off" class="form-control">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Новый пароль</th>
+          <td>
+            <div class="form-group">
+              <input type="password" placeholder="Новый пароль" autocomplete="off" class="form-control">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Подтверждение</th>
+          <td>
+            <div class="form-group">
+              <input type="password" placeholder="Подтверждение" autocomplete="off" class="form-control">
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="block">
+      <div class="warning">
+        <h5 >
+          ВНИМАНИЕ! Сейчас Вы собираетесь расторгнуть Публичный договор на
+          оказание услуг связи. Если Вы продолжите, услуга доступа в Интернет
+          будет заблокирована.
+        </h5>
+        <ul>
+          <li class="warning">
+            У Вас подключена услуга <b>Умный домофон</b>, при расторжении договора данная услуга не будет доступна.
+            <div class="warning__desc">
+              Если Вы хотите продолжить пользоваться услугой Умный домофон, но отказаться от услуги Интернет, Вам нужно перейти на тарифный план "УМНЫЙ ДОМОФОН" согласно
+              <a target="_blank" href="https://well-comm.ru/price/">прайс-листу</a>, для этого не расторгайте договор, а смените тариф на "УМНЫЙ ДОМОФОН".
+            </div>
+          </li>
+          <!---->
+        </ul>
+        <div class="buttons">
+          <button type="button" class="btn btn-primary">
+            Начать расторжение договора
+            <!---->
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"></div>
+</div>
+</body>
+<style>
+  .block {
+    display: none;
+    margin: 10px;
+    padding: 10px;
+  }
+</style>
+<script>
+  let select = document.getElementById('select');
+  let block = document.querySelectorAll('.block');
+  let lastIndex = 0; // После каждой смены опции, сохраняем сюда индекс предыдущего блока
+
+  select.addEventListener('change', function() {
+    block[lastIndex].style.display = "none";
+    // Чтобы сразу делать именно его невидимым при следующей смене
+
+    let index = select.selectedIndex; // Определить индекс выбранной опции
+    block[index].style.display = "block"; // Показать блок с соответствующим индексом
+
+    lastIndex = index; // Обновить сохраненный индекс.
+  });
+</script>
+</html>

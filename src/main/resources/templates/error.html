@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link href="/css/mystyle.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/background.css" rel="stylesheet">
+    <link href="/css/textcolor.css" rel="stylesheet">
+    <link href="/css/tableStyle.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div th:insert="Blocks/Header">...</div>
+<div align="center" class="bg-ex-animation">
+<div class="container" align="center">
+    <img src="/images/cat.png" style="width: 1000px; height: 600px; alignment: center" >
+    <h1 th:text="${errorCode}" style="color: white">404 - Страница не существует, не пугайте кота</h1>
+    <p th:utext="${errorMessage}">Error java.lang.NullPointerException</p>
+    <a href="index.html" th:href="@{/}" style="width: 400px;height: 50px; font-size: 20px"  class="btn btn-info">Вернуться на главную страницу</a>
+</div>
+    <div class="footer"></div>
+</div>
+
+</body>
+</html>
